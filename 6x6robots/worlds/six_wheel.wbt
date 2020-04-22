@@ -1,0 +1,436 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  CFM 8e-06
+}
+Viewpoint {
+  orientation 0.9783760670595545 -0.19908438621828828 -0.05608634922301033 5.8685594892202095
+  position -75.97286768856976 10.723878698644826 8.466543383089418
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  translation -80.21766041157818 1.243914684701274 -9.132877788383208
+  rotation -0.030773870230643614 -0.009463675325021122 0.9994815694950908 -0.0014193396339485112
+  children [
+    DEF Body Transform {
+      children [
+        Shape {
+          appearance DEF Appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/steel_floor.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "textures/steel_floor.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 4.4 1.4 2
+          }
+        }
+      ]
+    }
+    DEF Front_Left_Joint HingeJoint {
+      jointParameters DEF Front_Left_Joint_PM HingeJointParameters {
+        position 0.03049490222034472
+        axis 0 0 1
+        anchor 0.8 -0.3 -1.1
+        minStop -0.1
+        maxStop 0.5
+        springConstant 6100
+        dampingConstant 2000
+      }
+      endPoint Solid {
+        translation 0.8003221935677439 -0.30035721509356217 -1.0999990235781814
+        rotation 0 0 0.9999999999999999 0.030494902220339425
+        children [
+          DEF Front_Left_Leg Transform {
+            translation 0.5 -0.19 0
+            rotation 0 0 1 -0.3926996938995747
+            children [
+              DEF Front_Back_Leg Shape {
+                appearance USE Appearance
+                geometry Box {
+                  size 1.2 0.30000000000000004 0.2
+                }
+              }
+            ]
+          }
+          DEF Front_Left_Wheel_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.00021092797618038617
+              axis 0 0 1
+              anchor 1 -0.4 -0.3
+              staticFriction 0.016
+            }
+            device [
+              RotationalMotor {
+                name "wheel1"
+                maxVelocity 2000
+                maxTorque 3600
+              }
+            ]
+            endPoint Solid {
+              translation 0.9999611844120939 -0.40040562149781367 -0.2997360877976627
+              rotation 0 0 -1 0.00021092797641943087
+              children [
+                DEF Front_Left_Wheel Transform {
+                  rotation 1 0 0 -1.5707996938995747
+                  children [
+                    DEF Wheel Shape {
+                      appearance USE Appearance
+                      geometry Cylinder {
+                        height 0.4
+                        radius 0.6
+                      }
+                    }
+                  ]
+                }
+              ]
+              boundingObject USE Front_Left_Wheel
+              physics Physics {
+                density -1
+                mass 2
+              }
+            }
+          }
+        ]
+        boundingObject USE Front_Left_Leg
+        physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF Front_Left_Joint HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.030034046762569207
+        axis 0 0 1
+        anchor 0.8 -0.3 1.1
+        minStop -0.1
+        maxStop 0.5
+        springConstant 6200
+        dampingConstant 2000
+      }
+      endPoint Solid {
+        translation 0.8003463551106026 -0.3000582403439771 1.1000009923089145
+        rotation 2.018053958729362e-05 -1.4922569258292486e-05 0.9999999996850315 0.030030556790858857
+        children [
+          DEF Front_Right_Leg Transform {
+            translation 0.5 -0.19 0
+            rotation 0 0 1 -0.3926996938995747
+            children [
+              USE Front_Back_Leg
+            ]
+          }
+          DEF Front_Right_Wheel_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.0002090328139088271
+              axis 0 0 1
+              anchor 1 -0.4 0.3
+              staticFriction 0.016
+            }
+            device [
+              RotationalMotor {
+                name "wheel2"
+                maxVelocity 2000
+                maxTorque 3600
+              }
+            ]
+            endPoint Solid {
+              translation 1 -0.4 0.3
+              rotation 0 0 -1 0.00020903281373405407
+              children [
+                DEF Front_Right_Wheel Transform {
+                  rotation 1 0 0 -1.5707996938995747
+                  children [
+                    USE Wheel
+                  ]
+                }
+              ]
+              boundingObject USE Front_Right_Wheel
+              physics Physics {
+                density -1
+                mass 2
+              }
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Front_Right_Leg
+        physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF Back_Left_Joint HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.020204002268308728
+        axis 0 0 1
+        anchor -0.8 -0.3 -1.1
+        minStop -0.5
+        springConstant 13570
+        dampingConstant 2000
+      }
+      endPoint Solid {
+        translation -0.80034112073659 -0.3000269989735606 -1.0997861690427628
+        rotation 0.0008114911362771866 -0.00014355677637422975 -0.9999996604367362 0.02018943219264945
+        children [
+          DEF Back_Left_Leg Transform {
+            translation -0.5 -0.19 0
+            rotation 0 0 1 0.3926996938995747
+            children [
+              USE Front_Back_Leg
+            ]
+          }
+          DEF Back_Left_Wheel_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position 0.0002072939818273893
+              axis 0 0 1
+              anchor -1 -0.4 -0.3
+              staticFriction 0.016
+            }
+            device [
+              RotationalMotor {
+                name "wheel5"
+                maxVelocity 2000
+                maxTorque 3600
+              }
+            ]
+            endPoint Solid {
+              translation -1 -0.4 -0.3
+              rotation 0 0 1 0.00020729398196955506
+              children [
+                DEF Back_Left_Wheel Transform {
+                  rotation 1 0 0 -1.5707996938995747
+                  children [
+                    USE Wheel
+                  ]
+                }
+              ]
+              boundingObject USE Back_Left_Wheel
+              physics Physics {
+                density -1
+                mass 2
+              }
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE Back_Left_Leg
+        physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF Back_Right_Joint HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.020282372986283864
+        axis 0 0 1
+        anchor -0.8 -0.3 1.1
+        minStop -0.5
+        springConstant 13570
+        dampingConstant 2000
+      }
+      endPoint Solid {
+        translation -0.8003450907406349 -0.30002760751031265 1.1001423341104128
+        rotation -0.0007872994348257109 0.00018229251512239013 -0.999999673464466 0.020267783960566065
+        children [
+          DEF Back_Right_Leg Transform {
+            translation -0.5 -0.19 0
+            rotation 0 0 1 0.3926996938995747
+            children [
+              USE Front_Back_Leg
+            ]
+          }
+          DEF Back_Right_Wheel_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position 0.00020741891882639953
+              axis 0 0 1
+              anchor -1 -0.4 0.3
+              staticFriction 0.016
+            }
+            device [
+              RotationalMotor {
+                name "wheel6"
+                maxVelocity 2000
+                maxTorque 3600
+              }
+            ]
+            endPoint Solid {
+              translation -1 -0.4 0.3
+              rotation 0 0 1 0.00020741891846497192
+              children [
+                DEF Back_Right_Wheel Transform {
+                  rotation 1 0 0 -1.5707996938995747
+                  children [
+                    USE Wheel
+                  ]
+                }
+              ]
+              boundingObject USE Back_Right_Wheel
+              physics Physics {
+                density -1
+                mass 2
+              }
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE Back_Right_Leg
+        physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF Mid_Left_Leg_Solid Solid {
+      translation 0 -0.1 -1.1
+      rotation 0 0 1 0
+      children [
+        DEF Mid_Left_Leg Transform {
+          translation 0 -0.3 0
+          children [
+            DEF Mid_Leg Shape {
+              appearance USE Appearance
+              geometry Box {
+                size 0.30000000000000004 0.7000000000000001 0.2
+              }
+            }
+          ]
+        }
+        DEF Mid_Left_Wheel_Joint HingeJoint {
+          jointParameters HingeJointParameters {
+            position 2.6997236127042845e-06
+            axis 0 0 1
+            anchor 0 -0.6 -0.3
+            staticFriction 0.016
+            suspensionSpringConstant 9750
+            suspensionDampingConstant 1500
+            suspensionAxis 0 0.15 0
+          }
+          device [
+            RotationalMotor {
+              name "wheel3"
+              maxVelocity 2000
+              maxTorque 3600
+            }
+          ]
+          endPoint Solid {
+            translation 0 -0.6 -0.3
+            rotation -0.002012463151799533 -0.0017376263614138766 0.9999964653170985 0.007612946746605253
+            children [
+              DEF Mid_Left_Wheel Transform {
+                rotation 1 0 0 -1.5707996938995747
+                children [
+                  USE Wheel
+                ]
+              }
+            ]
+            boundingObject USE Mid_Left_Wheel
+            physics Physics {
+              density -1
+              mass 2
+            }
+          }
+        }
+      ]
+      name "solid(6)"
+      boundingObject USE Mid_Left_Leg
+      physics Physics {
+        density -1
+        mass 1
+      }
+    }
+    DEF Mid_Right_Leg_Solid Solid {
+      translation 0 -0.1 1.1
+      rotation 0 0 1 0
+      children [
+        DEF Mid_Right_Leg Transform {
+          translation 0 -0.30000000000000004 0
+          children [
+            USE Mid_Leg
+          ]
+        }
+        DEF Mid_Right_Wheel_Joint HingeJoint {
+          jointParameters HingeJointParameters {
+            position 2.2610390779831666e-06
+            axis 0 0 1
+            anchor 0 -0.6 0.3
+            staticFriction 0.016
+            suspensionSpringConstant 9750
+            suspensionDampingConstant 1500
+            suspensionAxis 0 0.15 0
+          }
+          device [
+            RotationalMotor {
+              name "wheel4"
+              maxVelocity 2000
+              maxTorque 3600
+            }
+          ]
+          endPoint Solid {
+            translation 0 -0.6 0.3
+            rotation -0.003162867547875927 -0.0028469528751852284 0.9999909455231085 0.007612564750498659
+            children [
+              DEF Mid_Right_Wheel Transform {
+                rotation 1 0 0 -1.5707996938995747
+                children [
+                  USE Wheel
+                ]
+              }
+            ]
+            boundingObject USE Mid_Right_Wheel
+            physics Physics {
+              density -1
+              mass 2
+            }
+          }
+        }
+      ]
+      name "solid(4)"
+      boundingObject USE Mid_Right_Leg
+      physics Physics {
+        density -1
+        mass 1
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+    density -1
+    mass 200
+    centerOfMass [
+      -0.1 -0.4 0
+    ]
+  }
+  controller "standard"
+}
+Floor {
+  contactMaterial "material2"
+  size 200 100
+  tileSize 2 2
+}
+SolidBox {
+  translation -40 0.5000000000000036 -8.735099150065732
+  size 20 1 8
+}
+SolidBox {
+  translation -15.72782110208663 0.49999999999998046 -7.447455658259754
+  rotation 0.9999999999999993 3.2088070524049284e-08 -1.8526056907035045e-08 5.759586494820413
+  name "box(2)"
+  size 10 1 8
+}
+SolidBox {
+  translation -61.5 0.4999999999999929 -8.74
+  rotation 1 0 0 3.141592605640826
+  name "box(1)"
+  size 20 1 8
+}
